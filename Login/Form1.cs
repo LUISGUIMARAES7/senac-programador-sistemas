@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace Login
 {
     public partial class FormLogin : Form
@@ -16,13 +18,20 @@ namespace Login
             String usuario = txtUsuario.Text;
             String senha = txtSenha.Text;
 
-            if ( usuario == null || usuario == "")
+            if (string.IsNullOrWhiteSpace(usuario))
             {
-                lblResultado.Text = "Usuário é obrigatório!!!";
+                lblResultado.Text = "Usuario e obrigatorio!!!";
                 lblResultado.ForeColor = Color.Red;
                 return;
             }
-            
+
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                lblResultado.Text = "Senha e obrigatoria!!!";
+                lblResultado.ForeColor = Color.Red;
+                return;
+            }
+
             if (usuario == usu & sen == senha)
             {
                 lblResultado.Text = "Autenticado com sucesso!";
@@ -30,11 +39,10 @@ namespace Login
             }
             else
             {
-                lblResultado.Text = "Usuário ou Senha incorretos...";
+                lblResultado.Text = "Usuario ou Senha incorretos...";
                 lblResultado.ForeColor = Color.Red;
             }
 
         }
-
     }
 }

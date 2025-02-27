@@ -53,6 +53,7 @@
             // btnEntrar
             // 
             btnEntrar.BackColor = SystemColors.ActiveCaption;
+            btnEntrar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEntrar.Location = new Point(200, 156);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(240, 26);
@@ -64,18 +65,20 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEmail.Location = new Point(200, 51);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(47, 15);
+            lblEmail.Size = new Size(49, 15);
             lblEmail.TabIndex = 3;
             lblEmail.Text = "Usuário";
             // 
             // lblSenha
             // 
             lblSenha.AutoSize = true;
+            lblSenha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSenha.Location = new Point(200, 95);
             lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(39, 15);
+            lblSenha.Size = new Size(41, 15);
             lblSenha.TabIndex = 4;
             lblSenha.Text = "Senha";
             // 
