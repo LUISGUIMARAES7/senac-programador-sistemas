@@ -4,6 +4,8 @@ namespace Login
 {
     public partial class FormLogin : Form
     {
+        List<string> listaUsuarios = new List<string>() {"ney", "cr7","rony" }; 
+
         public FormLogin()
         {
             InitializeComponent();
@@ -12,13 +14,10 @@ namespace Login
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            String usu = "luis";
-            String sen = "1234";
-
-            String usuario = txtUsuario.Text;
+            String usuarioBuscado = txtUsuario.Text;
             String senha = txtSenha.Text;
 
-            if (string.IsNullOrWhiteSpace(usuario))
+            if (string.IsNullOrWhiteSpace(usuarioBuscado))
             {
                 lblResultado.Text = "Usuario e obrigatorio!!!";
                 lblResultado.ForeColor = Color.Red;
@@ -32,7 +31,18 @@ namespace Login
                 return;
             }
 
-            if (usuario == usu & sen == senha)
+            int posicaoUsuarioEncontrado = -1;
+
+            for (int i = 0; i < listaUsuarios.Count; i++)
+            {
+                if (usuarioBuscado == listaUsuarios[i]) 
+                {
+                    posicaoUsuarioEncontrado = i;
+                }
+                
+            }
+
+            if (posicaoUsuarioEncontrado > -1 & senha == "1234")
             {
                 lblResultado.Text = "Autenticado com sucesso!";
                 lblResultado.ForeColor = Color.Green;
