@@ -4,7 +4,8 @@ namespace Login
 {
     public partial class FormLogin : Form
     {
-        List<string> listaUsuarios = new List<string>() {"ney", "cr7","rony" }; 
+        List<string> listaUsuarios = new List<string>() { "ney", "cr7", "rony" };
+        List<string> listaSenhas = new List<string>() { "bruna", "si", "rustico" };
 
         public FormLogin()
         {
@@ -31,18 +32,18 @@ namespace Login
                 return;
             }
 
-            int posicaoUsuarioEncontrado = -1;
+            int UsuarioEncontrado = -1;
 
             for (int i = 0; i < listaUsuarios.Count; i++)
             {
-                if (usuarioBuscado == listaUsuarios[i]) 
+                if (usuarioBuscado == listaUsuarios[i])
                 {
-                    posicaoUsuarioEncontrado = i;
+                    UsuarioEncontrado = i;
                 }
-                
+
             }
 
-            if (posicaoUsuarioEncontrado > -1 & senha == "1234")
+            if (UsuarioEncontrado > -1 & senha == listaSenhas[UsuarioEncontrado])
             {
                 lblResultado.Text = "Autenticado com sucesso!";
                 lblResultado.ForeColor = Color.Green;
@@ -54,5 +55,46 @@ namespace Login
             }
 
         }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            String novoUsuario = txtNovoUsuario.Text;
+            String novaSenha = txtNovaSenha.Text;
+
+            if (string.IsNullOrWhiteSpace(novoUsuario))
+            {
+                lblRes.Text = "Usuario é obrigatório!!!";
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(novaSenha))
+            {
+                lblRes.Text = "Senha é obrigatória!!!";
+                return;
+            }
+
+            Boolean usuarioEncontrado = false;
+
+            for (int i = 0; i < listaUsuarios.Count; i++) 
+            {
+                if (novoUsuario == listaUsuarios[i])
+                {
+                    usuarioEncontrado = true;
+                }
+            }
+
+            if (!usuarioEncontrado)
+            {
+                listaUsuarios.Add(novoUsuario);
+                listaSenhas.Add(novaSenha);
+                lblRes.Text = "Cadastrado com sucesso!!!";
+            }
+            else
+            {
+                lblRes.Text = "Usuario já existe";
+            }
+
+        }
     }
+
 }
