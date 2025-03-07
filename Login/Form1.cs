@@ -5,7 +5,7 @@ namespace Login
     public partial class FormLogin : Form
     {
         List<string> listaUsuarios = new List<string>() { "ney", "cr7", "rony" };
-        List<string> listaSenhas = new List<string>() { "bruna", "si", "rustico" };
+        List<string> listaSenhas = new List<string>() { "Bruna123.", "Receba123.", "Rustico123." };
 
         public FormLogin()
         {
@@ -17,6 +17,8 @@ namespace Login
         {
             String usuarioBuscado = txtUsuario.Text;
             String senha = txtSenha.Text;
+
+
 
             if (string.IsNullOrWhiteSpace(usuarioBuscado))
             {
@@ -73,17 +75,37 @@ namespace Login
                 return;
             }
 
-            Boolean usuarioEncontrado = false;
-
-            for (int i = 0; i < listaUsuarios.Count; i++) 
+            if (novaSenha.Length < 8)
             {
-                if (novoUsuario == listaUsuarios[i])
-                {
-                    usuarioEncontrado = true;
-                }
+                lblRes.Text = "Senha precisa ter 8 digitos";
+                return;
             }
 
-            if (!usuarioEncontrado)
+            if (!novaSenha.Any(char.IsUpper))
+            {
+                lblRes.Text = "Senha precisa ter uma letra maiúscula";
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsLower))
+            {
+                lblRes.Text = "Senha precisa ter uma letra minúscula";
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsNumber))
+            {
+                lblRes.Text = "Senha precisa ter um número";
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsPunctuation))
+            {
+                lblRes.Text = "Senha precisa ter um caracter especial ";
+                return;
+            }
+
+            if (listaUsuarios.Contains(novoUsuario))
             {
                 listaUsuarios.Add(novoUsuario);
                 listaSenhas.Add(novaSenha);
