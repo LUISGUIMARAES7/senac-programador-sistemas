@@ -4,20 +4,21 @@ namespace Login
 {
     public partial class FormLogin : Form
     {
-        List<string> listaUsuarios = new List<string>() { "ney", "cr7", "rony" };
-        List<string> listaSenhas = new List<string>() { "Bruna123.", "Receba123.", "Rustico123." };
-
+       
+        List <Usuario> usuarios = new List<Usuario> ();
+        
         public FormLogin()
         {
             InitializeComponent();
-
+            usuarios.Add(new Usuario() { Email = "ney@email.com", Senha = "Bruna123." });
+            usuarios.Add(new Usuario() { Email = "cr7@email.com", Senha = "Receba123." });
+            usuarios.Add(new Usuario() { Email = "rony@email.com", Senha = "Rustico123." });
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             String usuarioBuscado = txtUsuario.Text;
             String senha = txtSenha.Text;
-
 
 
             if (string.IsNullOrWhiteSpace(usuarioBuscado))
@@ -34,27 +35,27 @@ namespace Login
                 return;
             }
 
-            int UsuarioEncontrado = -1;
+            bool autenticado = false;
 
-            for (int i = 0; i < listaUsuarios.Count; i++)
+            for (int i = 0;usuarios.Count < i;i++)
             {
-                if (usuarioBuscado == listaUsuarios[i])
+                if (usuarios[i].Email == usuarioBuscado && usuarios[i].Senha == senha)
                 {
-                    UsuarioEncontrado = i;
+                    autenticado = true;
                 }
-
             }
 
-            if (UsuarioEncontrado > -1 & senha == listaSenhas[UsuarioEncontrado])
+            if (!autenticado)
             {
-                lblResultado.Text = "Autenticado com sucesso!";
-                lblResultado.ForeColor = Color.Green;
-            }
-            else
-            {
-                lblResultado.Text = "Usuario ou Senha incorretos...";
+                lblResultado.Text = "Usuário e/ou senha incorretos.";
                 lblResultado.ForeColor = Color.Red;
+                return;
             }
+
+            lblResultado.Text = "Autenticado com sucesso!";
+            lblResultado.ForeColor = Color.Green;
+            txtUsuario.Clear();
+            txtSenha.Clear();
 
         }
 
@@ -105,16 +106,34 @@ namespace Login
                 return;
             }
 
-            if (listaUsuarios.Contains(novoUsuario))
+            if (novaSenha.Contains(" "))
             {
-                listaUsuarios.Add(novoUsuario);
-                listaSenhas.Add(novaSenha);
-                lblRes.Text = "Cadastrado com sucesso!!!";
+                lblRes.Text = "Senha não deve conter espaços em branco";
+                return;
             }
-            else
+
+            bool encontrado = false;
+
+            for (int i = 0; i < usuarios.Count; i++)
+            {
+                if (usuarios[i].Email == novoUsuario)
+                {
+                    encontrado = true;
+                }
+            }
+
+            if (encontrado)
             {
                 lblRes.Text = "Usuario já existe";
+                return;
             }
+
+            usuarios.Add(new Usuario() { Email = novoUsuario, Senha = novaSenha });
+            lblRes.Text = "Cadastrado com sucesso!!!";
+            lblRes.ForeColor = Color.Green;
+            txtNovoUsuario.Clear();
+            txtNovaSenha.Clear();
+            
 
         }
     }
