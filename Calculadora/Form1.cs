@@ -8,7 +8,66 @@ namespace Calculadora
 
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
+        private bool Validar()
+        {
+            string valor1 = txtValor1.Text;
+            string valor2 = txtValor2.Text;
+
+            if (string.IsNullOrWhiteSpace(valor1) || string.IsNullOrWhiteSpace(valor2))
+            {
+                lblErro.Text = "Valor obrigatório";
+                return false;
+            }
+
+            try
+            {
+                Convert.ToDouble(valor1);
+                Convert.ToDouble(valor2);
+                return true;
+            }
+            catch
+            {
+                lblErro.Text = "Digite somente números";
+                return false;
+            }
+        }
+
+        private void Calcular()
+        {
+            string valor1 = txtValor1.Text;
+            string valor2 = txtValor2.Text;
+            string Res = lblRes.Text;
+            string Operacao = lblOperacao.Text;
+            double v1 = Convert.ToDouble(valor1);
+            double v2 = Convert.ToDouble(valor2);
+            double calc;
+
+            switch (Operacao)
+            {
+                case "+":
+                    calc = v1 + v2;
+                    lblRes.Text = Convert.ToString(calc);
+                    break;
+                case "-":
+                    calc = v1 - v2;
+                    lblRes.Text = Convert.ToString(calc);
+                    break;
+                case "*":
+                    calc = v1 * v2;
+                    lblRes.Text = Convert.ToString(calc);
+                    break;
+                case "/":
+                    calc = v1 / v2;
+                    lblRes.Text = Convert.ToString(calc);
+                    break;
+                default:
+                    MessageBox.Show("Selecione uma operação");
+                    break;
+            }
+
+        }
+
+        private void btnSoma_Click(object sender, EventArgs e)
         {
 
             string valor1 = txtValor1.Text;
@@ -16,21 +75,13 @@ namespace Calculadora
             string Res = lblRes.Text;
 
 
-            if (string.IsNullOrWhiteSpace(valor1) || string.IsNullOrWhiteSpace(valor2))
+            if (Validar())
             {
-                MessageBox.Show("Valores obrigatórios");
+                double calcular = Convert.ToDouble(valor1) + Convert.ToDouble(valor2);
+                lblRes.Text = $"{calcular}";
                 return;
             }
 
-            if (!valor1.All(char.IsNumber) || !valor2.All(char.IsNumber))
-            {
-                MessageBox.Show("Digite somente números");
-                return;
-            }
-
-            double calcular = Convert.ToDouble(valor1) + Convert.ToDouble(valor2);
-
-            lblRes.Text = $"{calcular}";
 
         }
 
@@ -40,21 +91,12 @@ namespace Calculadora
             string valor2 = txtValor2.Text;
             string Res = lblRes.Text;
 
-            if (string.IsNullOrWhiteSpace(valor1) || string.IsNullOrWhiteSpace(valor2))
+            if (Validar())
             {
-                MessageBox.Show("Valores obrigatórios");
+                double calcular = Convert.ToDouble(valor1) - Convert.ToDouble(valor2);
+                lblRes.Text = $"{calcular}";
                 return;
             }
-
-            if (!valor1.All(char.IsNumber) || !valor2.All(char.IsNumber))
-            {
-                MessageBox.Show("Digite somente números");
-                return;
-            }
-
-            double calcular = Convert.ToDouble(valor1) - Convert.ToDouble(valor2);
-
-            lblRes.Text = $"{calcular}";
         }
 
         private void btnMult_Click(object sender, EventArgs e)
@@ -63,21 +105,12 @@ namespace Calculadora
             string valor2 = txtValor2.Text;
             string Res = lblRes.Text;
 
-            if (string.IsNullOrWhiteSpace(valor1) || string.IsNullOrWhiteSpace(valor2))
+            if (Validar())
             {
-                MessageBox.Show("Valores obrigatórios");
+                double calcular = Convert.ToDouble(valor1) * Convert.ToDouble(valor2);
+                lblRes.Text = $"{calcular}";
                 return;
             }
-
-            if (!valor1.All(char.IsNumber) || !valor2.All(char.IsNumber))
-            {
-                MessageBox.Show("Digite somente números");
-                return;
-            }
-
-            double calcular = Convert.ToDouble(valor1) * Convert.ToDouble(valor2);
-
-            lblRes.Text = $"{calcular}";
         }
 
         private void btnDiv_Click(object sender, EventArgs e)
@@ -86,33 +119,54 @@ namespace Calculadora
             string valor2 = txtValor2.Text;
             string Res = lblRes.Text;
 
-            if (string.IsNullOrWhiteSpace(valor1) || string.IsNullOrWhiteSpace(valor2))
+            if (Validar())
             {
-                MessageBox.Show("Valores obrigatórios");
+                double calcular = Convert.ToDouble(valor1) / Convert.ToDouble(valor2);
+                lblRes.Text = $"{calcular}";
                 return;
             }
-
-            if (!valor1.All(char.IsNumber) || !valor2.All(char.IsNumber))
-            {
-                MessageBox.Show("Digite somente números");
-                return;
-            }
-
-            double calcular = Convert.ToDouble(valor1) / Convert.ToDouble(valor2);
-
-            if (calcular % 1 != 0)
-            {
-                lblRes.Text = $"{calcular:F2}";
-                return;
-            }
-
-            lblRes.Text = $"{calcular}";
         }
 
-        private void newToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void radioSoma_CheckedChanged(object sender, EventArgs e)
+        {
+            lblOperacao.Text = "+";
+        }
+
+        private void radioSub_CheckedChanged(object sender, EventArgs e)
+        {
+            lblOperacao.Text = "-";
+        }
+
+        private void radioMult_CheckedChanged(object sender, EventArgs e)
+        {
+            lblOperacao.Text = "*";
+        }
+
+        private void radioDiv_CheckedChanged(object sender, EventArgs e)
+        {
+            lblOperacao.Text = "/";
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            lblErro.Text = "";
+            if (Validar())
+            {
+                Calcular();
+            }
+
+        }
+
+        private void perimetorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 novaAba = new Form1();
-            this.Hide();
+            //this.Hide();
             novaAba.Show();
         }
     }
