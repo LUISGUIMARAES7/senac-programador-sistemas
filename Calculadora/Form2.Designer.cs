@@ -33,14 +33,14 @@
             radioVol = new RadioButton();
             btnCalcular = new Button();
             txtLado1 = new TextBox();
-            label1 = new Label();
-            txtLado3 = new TextBox();
+            lblRes = new Label();
             txtLado2 = new TextBox();
-            txtLado4 = new TextBox();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            lblErro = new Label();
+            radioQuad = new RadioButton();
+            radioRet = new RadioButton();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // radioPer
@@ -84,93 +84,93 @@
             btnCalcular.TabIndex = 3;
             btnCalcular.Text = "CALCULAR";
             btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
             // 
             // txtLado1
             // 
-            txtLado1.Location = new Point(32, 84);
+            txtLado1.Location = new Point(81, 83);
             txtLado1.Name = "txtLado1";
             txtLado1.Size = new Size(63, 23);
             txtLado1.TabIndex = 4;
+            txtLado1.Text = "0";
             // 
-            // label1
+            // lblRes
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(24, 129);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 21);
-            label1.TabIndex = 5;
-            // 
-            // txtLado3
-            // 
-            txtLado3.Location = new Point(170, 84);
-            txtLado3.Name = "txtLado3";
-            txtLado3.Size = new Size(63, 23);
-            txtLado3.TabIndex = 6;
+            lblRes.AutoSize = true;
+            lblRes.Font = new Font("Segoe UI", 12F);
+            lblRes.Location = new Point(24, 129);
+            lblRes.Name = "lblRes";
+            lblRes.Size = new Size(0, 21);
+            lblRes.TabIndex = 5;
             // 
             // txtLado2
             // 
-            txtLado2.Location = new Point(101, 84);
+            txtLado2.Location = new Point(178, 83);
             txtLado2.Name = "txtLado2";
             txtLado2.Size = new Size(63, 23);
             txtLado2.TabIndex = 7;
-            // 
-            // txtLado4
-            // 
-            txtLado4.Location = new Point(239, 84);
-            txtLado4.Name = "txtLado4";
-            txtLado4.Size = new Size(63, 23);
-            txtLado4.TabIndex = 8;
+            txtLado2.Text = "0";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(43, 66);
             label2.Name = "label2";
-            label2.Size = new Size(39, 15);
+            label2.Size = new Size(0, 15);
             label2.TabIndex = 9;
-            label2.Text = "lado 1";
             // 
-            // label3
+            // lblErro
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(112, 66);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 10;
-            label3.Text = "lado 2";
+            lblErro.AutoSize = true;
+            lblErro.Location = new Point(12, 250);
+            lblErro.Name = "lblErro";
+            lblErro.Size = new Size(0, 15);
+            lblErro.TabIndex = 13;
             // 
-            // label4
+            // radioQuad
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(181, 66);
-            label4.Name = "label4";
-            label4.Size = new Size(39, 15);
-            label4.TabIndex = 11;
-            label4.Text = "lado 3";
+            radioQuad.AutoSize = true;
+            radioQuad.Location = new Point(11, 22);
+            radioQuad.Name = "radioQuad";
+            radioQuad.Size = new Size(78, 19);
+            radioQuad.TabIndex = 14;
+            radioQuad.TabStop = true;
+            radioQuad.Text = "Quadrado";
+            radioQuad.UseVisualStyleBackColor = true;
+            radioQuad.CheckedChanged += radioQuad_CheckedChanged;
             // 
-            // label5
+            // radioRet
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(249, 66);
-            label5.Name = "label5";
-            label5.Size = new Size(39, 15);
-            label5.TabIndex = 12;
-            label5.Text = "lado 4";
+            radioRet.AutoSize = true;
+            radioRet.Location = new Point(211, 22);
+            radioRet.Name = "radioRet";
+            radioRet.Size = new Size(79, 19);
+            radioRet.TabIndex = 15;
+            radioRet.TabStop = true;
+            radioRet.Text = "Retângulo";
+            radioRet.UseVisualStyleBackColor = true;
+            radioRet.CheckedChanged += radioRet_CheckedChanged;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(radioQuad);
+            groupBox1.Controls.Add(radioRet);
+            groupBox1.Location = new Point(12, 13);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(300, 50);
+            groupBox1.TabIndex = 16;
+            groupBox1.TabStop = false;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(336, 274);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(groupBox1);
+            Controls.Add(lblErro);
             Controls.Add(label2);
-            Controls.Add(txtLado4);
             Controls.Add(txtLado2);
-            Controls.Add(txtLado3);
-            Controls.Add(label1);
+            Controls.Add(lblRes);
             Controls.Add(txtLado1);
             Controls.Add(btnCalcular);
             Controls.Add(radioVol);
@@ -178,6 +178,8 @@
             Controls.Add(radioPer);
             Name = "Form2";
             Text = "Form2";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,13 +191,12 @@
         private RadioButton radioVol;
         private Button btnCalcular;
         private TextBox txtLado1;
-        private Label label1;
-        private TextBox txtLado3;
+        private Label lblRes;
         private TextBox txtLado2;
-        private TextBox txtLado4;
         private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label lblErro;
+        private RadioButton radioQuad;
+        private RadioButton radioRet;
+        private GroupBox groupBox1;
     }
 }
