@@ -60,14 +60,14 @@
             // 
             // txtValor1
             // 
-            txtValor1.Location = new Point(49, 123);
+            txtValor1.Location = new Point(49, 77);
             txtValor1.Name = "txtValor1";
             txtValor1.Size = new Size(73, 23);
             txtValor1.TabIndex = 0;
             // 
             // txtValor2
             // 
-            txtValor2.Location = new Point(147, 123);
+            txtValor2.Location = new Point(147, 77);
             txtValor2.Name = "txtValor2";
             txtValor2.Size = new Size(73, 23);
             txtValor2.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             // btnSoma
             // 
-            btnSoma.Location = new Point(45, 174);
+            btnSoma.Location = new Point(45, 128);
             btnSoma.Name = "btnSoma";
             btnSoma.Size = new Size(47, 23);
             btnSoma.TabIndex = 3;
@@ -95,7 +95,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(226, 126);
+            label3.Location = new Point(226, 80);
             label3.Name = "label3";
             label3.Size = new Size(15, 15);
             label3.TabIndex = 5;
@@ -105,14 +105,14 @@
             // 
             lblRes.AutoSize = true;
             lblRes.Font = new Font("Segoe UI", 12F);
-            lblRes.Location = new Point(247, 123);
+            lblRes.Location = new Point(247, 77);
             lblRes.Name = "lblRes";
             lblRes.Size = new Size(0, 21);
             lblRes.TabIndex = 6;
             // 
             // btnSub
             // 
-            btnSub.Location = new Point(109, 174);
+            btnSub.Location = new Point(109, 128);
             btnSub.Name = "btnSub";
             btnSub.Size = new Size(39, 23);
             btnSub.TabIndex = 7;
@@ -122,7 +122,7 @@
             // 
             // btnMult
             // 
-            btnMult.Location = new Point(162, 174);
+            btnMult.Location = new Point(162, 128);
             btnMult.Name = "btnMult";
             btnMult.Size = new Size(48, 23);
             btnMult.TabIndex = 8;
@@ -132,7 +132,7 @@
             // 
             // btnDiv
             // 
-            btnDiv.Location = new Point(227, 174);
+            btnDiv.Location = new Point(227, 128);
             btnDiv.Name = "btnDiv";
             btnDiv.Size = new Size(43, 23);
             btnDiv.TabIndex = 9;
@@ -204,7 +204,7 @@
             // radioSoma
             // 
             radioSoma.AutoSize = true;
-            radioSoma.Location = new Point(12, 221);
+            radioSoma.Location = new Point(14, 166);
             radioSoma.Name = "radioSoma";
             radioSoma.Size = new Size(55, 19);
             radioSoma.TabIndex = 14;
@@ -216,7 +216,7 @@
             // radioSub
             // 
             radioSub.AutoSize = true;
-            radioSub.Location = new Point(12, 246);
+            radioSub.Location = new Point(14, 191);
             radioSub.Name = "radioSub";
             radioSub.Size = new Size(78, 19);
             radioSub.TabIndex = 15;
@@ -228,7 +228,7 @@
             // radioMult
             // 
             radioMult.AutoSize = true;
-            radioMult.Location = new Point(12, 271);
+            radioMult.Location = new Point(14, 216);
             radioMult.Name = "radioMult";
             radioMult.Size = new Size(97, 19);
             radioMult.TabIndex = 16;
@@ -240,7 +240,7 @@
             // radioDiv
             // 
             radioDiv.AutoSize = true;
-            radioDiv.Location = new Point(12, 296);
+            radioDiv.Location = new Point(14, 241);
             radioDiv.Name = "radioDiv";
             radioDiv.Size = new Size(63, 19);
             radioDiv.TabIndex = 17;
@@ -252,14 +252,14 @@
             // lblOperacao
             // 
             lblOperacao.AutoSize = true;
-            lblOperacao.Location = new Point(128, 126);
+            lblOperacao.Location = new Point(128, 80);
             lblOperacao.Name = "lblOperacao";
             lblOperacao.Size = new Size(0, 15);
             lblOperacao.TabIndex = 18;
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(109, 338);
+            btnCalcular.Location = new Point(109, 267);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(75, 23);
             btnCalcular.TabIndex = 19;
@@ -270,7 +270,7 @@
             // lblErro
             // 
             lblErro.AutoSize = true;
-            lblErro.Location = new Point(12, 392);
+            lblErro.Location = new Point(14, 309);
             lblErro.Name = "lblErro";
             lblErro.Size = new Size(0, 15);
             lblErro.TabIndex = 20;
@@ -284,7 +284,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(304, 416);
+            ClientSize = new Size(304, 341);
             Controls.Add(lblErro);
             Controls.Add(btnCalcular);
             Controls.Add(lblOperacao);

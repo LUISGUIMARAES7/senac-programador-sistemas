@@ -75,7 +75,7 @@ namespace Calculadora
             if (radioQuad.Checked) // QUADRADO SELECIONADO
             {
                 return 0;
-            } 
+            }
             else // RETANGULO SELECIONADO
             {
                 return 1;
@@ -125,9 +125,9 @@ namespace Calculadora
             }
 
 
-            
 
-        }        
+
+        }
 
         private void radioQuad_CheckedChanged(object sender, EventArgs e)
         {
@@ -151,6 +151,24 @@ namespace Calculadora
                 Calcular();
             }
 
+        }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
+
+        private void quadradoRetânguloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
+
+        private void esferaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
         }
     }
 }

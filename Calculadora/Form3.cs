@@ -73,7 +73,7 @@ namespace Calculadora
                     lblRes.Text = $"Perímetro: {2 * Math.PI * valorRaio:F2} ";
                     break;
                 case 1:
-                    lblRes.Text = $"Diametro: {2*valorRaio} ";
+                    lblRes.Text = $"Diametro: {2 * valorRaio} ";
                     break;
                 case 2:
                     lblRes.Text = $"Área: {Math.PI * Math.Pow(valorRaio, 2):F2}";
@@ -86,7 +86,7 @@ namespace Calculadora
             }
         }
 
-        
+
 
         private void radioPer_CheckedChanged(object sender, EventArgs e)
         {
@@ -117,5 +117,22 @@ namespace Calculadora
             }
         }
 
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
+
+        private void quadradoRetânguloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
+
+        private void esferaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
     }
 }
