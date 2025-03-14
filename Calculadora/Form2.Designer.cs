@@ -40,6 +40,7 @@
             radioQuad = new RadioButton();
             radioRet = new RadioButton();
             groupBox1 = new GroupBox();
+            txtLado3 = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -88,7 +89,7 @@
             // 
             // txtLado1
             // 
-            txtLado1.Location = new Point(81, 83);
+            txtLado1.Location = new Point(66, 84);
             txtLado1.Name = "txtLado1";
             txtLado1.Size = new Size(63, 23);
             txtLado1.TabIndex = 4;
@@ -105,7 +106,7 @@
             // 
             // txtLado2
             // 
-            txtLado2.Location = new Point(178, 83);
+            txtLado2.Location = new Point(135, 84);
             txtLado2.Name = "txtLado2";
             txtLado2.Size = new Size(63, 23);
             txtLado2.TabIndex = 7;
@@ -130,6 +131,7 @@
             // radioQuad
             // 
             radioQuad.AutoSize = true;
+            radioQuad.Checked = true;
             radioQuad.Location = new Point(11, 22);
             radioQuad.Name = "radioQuad";
             radioQuad.Size = new Size(78, 19);
@@ -146,7 +148,6 @@
             radioRet.Name = "radioRet";
             radioRet.Size = new Size(79, 19);
             radioRet.TabIndex = 15;
-            radioRet.TabStop = true;
             radioRet.Text = "Retângulo";
             radioRet.UseVisualStyleBackColor = true;
             radioRet.CheckedChanged += radioRet_CheckedChanged;
@@ -161,11 +162,20 @@
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             // 
+            // txtLado3
+            // 
+            txtLado3.Location = new Point(204, 84);
+            txtLado3.Name = "txtLado3";
+            txtLado3.Size = new Size(63, 23);
+            txtLado3.TabIndex = 17;
+            txtLado3.Text = "0";
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(336, 274);
+            ClientSize = new Size(344, 261);
+            Controls.Add(txtLado3);
             Controls.Add(groupBox1);
             Controls.Add(lblErro);
             Controls.Add(label2);
@@ -177,6 +187,7 @@
             Controls.Add(radioArea);
             Controls.Add(radioPer);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -198,5 +209,6 @@
         private RadioButton radioQuad;
         private RadioButton radioRet;
         private GroupBox groupBox1;
+        private TextBox txtLado3;
     }
 }

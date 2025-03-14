@@ -43,6 +43,7 @@
             newToolStripMenuItem1 = new ToolStripMenuItem();
             calculadoraToolStripMenuItem = new ToolStripMenuItem();
             perimetorToolStripMenuItem = new ToolStripMenuItem();
+            esferasToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -157,7 +158,7 @@
             // 
             // newToolStripMenuItem1
             // 
-            newToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { calculadoraToolStripMenuItem, perimetorToolStripMenuItem });
+            newToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { calculadoraToolStripMenuItem, perimetorToolStripMenuItem, esferasToolStripMenuItem });
             newToolStripMenuItem1.Name = "newToolStripMenuItem1";
             newToolStripMenuItem1.Size = new Size(180, 22);
             newToolStripMenuItem1.Text = "New";
@@ -175,6 +176,13 @@
             perimetorToolStripMenuItem.Size = new Size(186, 22);
             perimetorToolStripMenuItem.Text = "Quadrado/Retangulo";
             perimetorToolStripMenuItem.Click += perimetorToolStripMenuItem_Click;
+            // 
+            // esferasToolStripMenuItem
+            // 
+            esferasToolStripMenuItem.Name = "esferasToolStripMenuItem";
+            esferasToolStripMenuItem.Size = new Size(186, 22);
+            esferasToolStripMenuItem.Text = "Circunferencias";
+            esferasToolStripMenuItem.Click += esferasToolStripMenuItem_Click;
             // 
             // openToolStripMenuItem
             // 
@@ -295,6 +303,7 @@
             Controls.Add(txtValor1);
             Controls.Add(menuStrip1);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "f";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -329,5 +338,6 @@
         private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem calculadoraToolStripMenuItem;
         private ToolStripMenuItem perimetorToolStripMenuItem;
+        private ToolStripMenuItem esferasToolStripMenuItem;
     }
 }

@@ -169,5 +169,11 @@ namespace Calculadora
             //this.Hide();
             novaAba.Show();
         }
+
+        private void esferasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 novaAbaEsfera = new Form3();
+            novaAbaEsfera.Show();
+        }
     }
 }
