@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Calculadora
+﻿namespace Calculadora
 {
     public partial class Form3 : Form
     {
@@ -42,47 +32,33 @@ namespace Calculadora
 
         }
 
-        private int TipoOperacao()
-        {
-
-            if (radioPer.Checked)
-            {
-                return 0;
-            }
-            else if (radioDia.Checked)
-            {
-                return 1;
-            }
-            else if (radioArea.Checked)
-            {
-                return 2;
-            }
-            else
-            {
-                return 3;
-            }
-        }
-
         private void Calcular()
         {
             double valorRaio = Convert.ToDouble(txtRaio.Text);
 
-            switch (TipoOperacao())
+
+            if (radioPer.Checked)
             {
-                case 0:
-                    lblRes.Text = $"Perímetro: {2 * Math.PI * valorRaio:F2} ";
-                    break;
-                case 1:
-                    lblRes.Text = $"Diametro: {2 * valorRaio} ";
-                    break;
-                case 2:
-                    lblRes.Text = $"Área: {Math.PI * Math.Pow(valorRaio, 2):F2}";
-                    break;
-                case 3:
-                    lblRes.Text = $"Volume: {(4.0 / 3.0) * Math.PI * Math.Pow(valorRaio, 3):F2} ";
-                    break;
-                default:
-                    break;
+                lblRes.Text = $"Perímetro: {2 * Math.PI * valorRaio:F2} ";
+                return;
+            }
+
+            if (radioDia.Checked)
+            {
+                lblRes.Text = $"Diametro: {2 * valorRaio} ";
+                return;
+            }
+
+            if (radioArea.Checked)
+            {
+                lblRes.Text = $"Área: {Math.PI * Math.Pow(valorRaio, 2):F2}";
+                return;
+            }
+
+            if (radioVol.Checked)
+            {
+                lblRes.Text = $"Volume: {(4.0 / 3.0) * Math.PI * Math.Pow(valorRaio, 3):F2} ";
+                return;
             }
         }
 
@@ -111,10 +87,11 @@ namespace Calculadora
         private void btncalcular_Click(object sender, EventArgs e)
         {
             lblErro.Text = "";
-            if (Validar())
+            if (!Validar())
             {
-                Calcular();
+                return;
             }
+            Calcular();
         }
 
         private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
