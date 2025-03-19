@@ -15,10 +15,10 @@ namespace CadastroCliente
         public string Email { get; set; }
         public string NomeSocial { get; set; }
         public bool Estrangeiro { get; set; }
-        EnderecoCliente Endereco;
-        GeneroCliente Genero { get; set; }
-        EtniaCliente Etnia {  get; set; }
-        TipoCliente Tipo { get; set; }
+        public Genero Genero { get; set; }
+        public Etnia Etnia {  get; set; }
+        public Tipo Tipo { get; set; }
+        public Endereco Endereco { get; set; }
     }
             
 }
