@@ -9,6 +9,7 @@ namespace CadastroCliente
     enum Genero
     {
         Macho, 
-        Femi
+        Fêmea,
+        Diferente
     }
 }

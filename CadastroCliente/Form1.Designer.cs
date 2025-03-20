@@ -76,7 +76,7 @@
             mTxtTelefone.Mask = "(99) 00000-0000";
             mTxtTelefone.Name = "mTxtTelefone";
             mTxtTelefone.Size = new Size(135, 29);
-            mTxtTelefone.TabIndex = 0;
+            mTxtTelefone.TabIndex = 1;
             // 
             // btnCadastrar
             // 
@@ -84,7 +84,7 @@
             btnCadastrar.Location = new Point(351, 382);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(91, 23);
-            btnCadastrar.TabIndex = 1;
+            btnCadastrar.TabIndex = 17;
             btnCadastrar.Text = "CADASTRAR";
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
@@ -181,24 +181,27 @@
             // 
             // txtNome
             // 
+            txtNome.Font = new Font("Segoe UI", 12F);
             txtNome.Location = new Point(57, 47);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(276, 29);
-            txtNome.TabIndex = 13;
+            txtNome.TabIndex = 0;
             // 
             // txtNomeSocial
             // 
+            txtNomeSocial.Font = new Font("Segoe UI", 12F);
             txtNomeSocial.Location = new Point(91, 117);
             txtNomeSocial.Name = "txtNomeSocial";
             txtNomeSocial.Size = new Size(242, 29);
-            txtNomeSocial.TabIndex = 16;
+            txtNomeSocial.TabIndex = 6;
             // 
             // txtEmail
             // 
+            txtEmail.Font = new Font("Segoe UI", 12F);
             txtEmail.Location = new Point(57, 82);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(276, 29);
-            txtEmail.TabIndex = 17;
+            txtEmail.TabIndex = 3;
             // 
             // mTxtDataNascimento
             // 
@@ -207,7 +210,7 @@
             mTxtDataNascimento.Mask = "00/00/0000";
             mTxtDataNascimento.Name = "mTxtDataNascimento";
             mTxtDataNascimento.Size = new Size(96, 29);
-            mTxtDataNascimento.TabIndex = 18;
+            mTxtDataNascimento.TabIndex = 2;
             mTxtDataNascimento.ValidatingType = typeof(DateTime);
             // 
             // cBoxGenero
@@ -218,7 +221,7 @@
             cBoxGenero.Location = new Point(408, 82);
             cBoxGenero.Name = "cBoxGenero";
             cBoxGenero.Size = new Size(100, 29);
-            cBoxGenero.TabIndex = 19;
+            cBoxGenero.TabIndex = 4;
             // 
             // checkBoxEstrangeiro
             // 
@@ -227,7 +230,7 @@
             checkBoxEstrangeiro.Location = new Point(354, 125);
             checkBoxEstrangeiro.Name = "checkBoxEstrangeiro";
             checkBoxEstrangeiro.Size = new Size(89, 19);
-            checkBoxEstrangeiro.TabIndex = 20;
+            checkBoxEstrangeiro.TabIndex = 7;
             checkBoxEstrangeiro.Text = "Estrangeiro";
             checkBoxEstrangeiro.UseVisualStyleBackColor = true;
             // 
@@ -235,11 +238,11 @@
             // 
             cBoxEtnia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cBoxEtnia.FormattingEnabled = true;
-            cBoxEtnia.Items.AddRange(new object[] { "Asiática ", "Branca", "Negra ", "Indígena", "Latina", "Árabe ", "Judaica", "Roma (Cigana)", "Polinésia", "Mestiça", "Nativo Americano", "Aborígene Australiano", "Sul-Asiática", "Europeia", "Subsaariana" });
+            cBoxEtnia.Items.AddRange(new object[] { "Branco", "Preto", "Pardo", "Amarelo" });
             cBoxEtnia.Location = new Point(570, 82);
             cBoxEtnia.Name = "cBoxEtnia";
             cBoxEtnia.Size = new Size(177, 29);
-            cBoxEtnia.TabIndex = 21;
+            cBoxEtnia.TabIndex = 5;
             // 
             // radioPF
             // 
@@ -249,7 +252,7 @@
             radioPF.Location = new Point(637, 121);
             radioPF.Name = "radioPF";
             radioPF.Size = new Size(38, 19);
-            radioPF.TabIndex = 22;
+            radioPF.TabIndex = 8;
             radioPF.TabStop = true;
             radioPF.Text = "PF";
             radioPF.UseVisualStyleBackColor = true;
@@ -261,7 +264,7 @@
             radioPJ.Location = new Point(681, 121);
             radioPJ.Name = "radioPJ";
             radioPJ.Size = new Size(36, 19);
-            radioPJ.TabIndex = 23;
+            radioPJ.TabIndex = 9;
             radioPJ.Text = "PJ";
             radioPJ.UseVisualStyleBackColor = true;
             // 
@@ -337,46 +340,52 @@
             // 
             // txtNumero
             // 
+            txtNumero.Font = new Font("Segoe UI", 9F);
             txtNumero.Location = new Point(536, 16);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(190, 23);
-            txtNumero.TabIndex = 32;
+            txtNumero.TabIndex = 11;
             // 
             // txtLogradouro
             // 
+            txtLogradouro.Font = new Font("Segoe UI", 9F);
             txtLogradouro.Location = new Point(100, 16);
             txtLogradouro.Name = "txtLogradouro";
             txtLogradouro.Size = new Size(363, 23);
-            txtLogradouro.TabIndex = 33;
+            txtLogradouro.TabIndex = 10;
             // 
             // txtComplemento
             // 
+            txtComplemento.Font = new Font("Segoe UI", 9F);
             txtComplemento.Location = new Point(117, 45);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.Size = new Size(346, 23);
-            txtComplemento.TabIndex = 34;
+            txtComplemento.TabIndex = 12;
             // 
             // txtBairro
             // 
+            txtBairro.Font = new Font("Segoe UI", 9F);
             txtBairro.Location = new Point(525, 45);
             txtBairro.Name = "txtBairro";
             txtBairro.Size = new Size(201, 23);
-            txtBairro.TabIndex = 35;
+            txtBairro.TabIndex = 13;
             // 
             // txtMunicipio
             // 
+            txtMunicipio.Font = new Font("Segoe UI", 9F);
             txtMunicipio.Location = new Point(100, 74);
             txtMunicipio.Name = "txtMunicipio";
             txtMunicipio.Size = new Size(190, 23);
-            txtMunicipio.TabIndex = 36;
+            txtMunicipio.TabIndex = 14;
             // 
             // mTxtCEP
             // 
+            mTxtCEP.Font = new Font("Segoe UI", 9F);
             mTxtCEP.Location = new Point(514, 74);
             mTxtCEP.Mask = "00000-000";
             mTxtCEP.Name = "mTxtCEP";
             mTxtCEP.Size = new Size(100, 23);
-            mTxtCEP.TabIndex = 38;
+            mTxtCEP.TabIndex = 16;
             // 
             // groupBox1
             // 
@@ -432,12 +441,13 @@
             // 
             // cBoxEstado
             // 
+            cBoxEstado.Font = new Font("Segoe UI", 9F);
             cBoxEstado.FormattingEnabled = true;
             cBoxEstado.Items.AddRange(new object[] { "AC ", "AL", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "GO ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SC ", "SP ", "SE ", "TO" });
             cBoxEstado.Location = new Point(357, 74);
             cBoxEstado.Name = "cBoxEstado";
             cBoxEstado.Size = new Size(106, 23);
-            cBoxEstado.TabIndex = 39;
+            cBoxEstado.TabIndex = 15;
             // 
             // lblErro
             // 
