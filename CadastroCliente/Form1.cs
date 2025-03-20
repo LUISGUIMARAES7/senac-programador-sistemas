@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 namespace CadastroCliente
 {
@@ -36,20 +37,40 @@ namespace CadastroCliente
             return novoId;
         }
 
-        //public bool validaremail()
-        //{
-            
-        //    foreach (var e in clientes)
-        //    {
-        //        string email = txtEmail.Text;
-        //        if (email == e.Email)
-        //        {
-        //            return false;
-        //        }
-        //    }
+        public bool encontrarEmail()
+        {
+            foreach (var e in clientes)
+            {
+                string email = txtEmail.Text;
+                if (e.Email == email)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
+        }
+        public bool EmailValido(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
 
-        //    return true;
-        //}
+        public bool encontrarTelefone(string tel)
+        {
+            foreach (var e in clientes)
+            {
+                string telefone = tel;
+                if (e.Telefone == telefone)
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        
 
         public bool Validar()
         {
@@ -72,32 +93,62 @@ namespace CadastroCliente
             string tipoPJ = radioPJ.Text;
 
 
-
-
             if (string.IsNullOrEmpty(nome))
             {
                 txtNome.Focus();
                 lblErro.Text = "Campo Nome obrigatório";
                 return false;
             }
-            //if (string.IsNullOrEmpty(telefone)) 
+
+            if (telefone.StartsWith("(") && telefone.Contains(")") && telefone.Contains("-"))
+            {
+                string numerosTelefone = telefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
+                if (string.IsNullOrEmpty(numerosTelefone) || numerosTelefone.Length != 11)
+                {
+                    mTxtTelefone.Focus();
+                    lblErro.Text = "Campo Telefone obrigatório";
+                    return false;
+                }
+            }
+
+            if (encontrarTelefone(telefone))
+            {
+                lblErro.Text = "Telefone já cadastrado";
+                mTxtTelefone.Focus();
+                return false;
+            }
+
+            //if (dataNascimento.StartsWith("_") && dataNascimento.Contains("_"))
             //{
-            //    mTxtTelefone.Focus();
-            //    lblErro.Text = "Campo Telefone obrigatório";
-            //    return false;
-            //}
-            //if (string.IsNullOrEmpty(dataNascimento)) 
-            //{
-            //    mTxtDataNascimento.Focus();
-            //    lblErro.Text = "Campo Data de Nascimento obrigatório";
-            //    return false;
+            //    string dataNas = dataNascimento.Replace("_", "").Replace(" ", "");
+
+            //    if (string.IsNullOrEmpty(dataNas) || dataNas.Length != 8)
+            //    {
+            //        mTxtDataNascimento.Focus();
+            //        lblErro.Text = "Campo Data Nascimento obrigatório";
+            //        return false;
+            //    }
             //}
 
-            if (string.IsNullOrEmpty(email) /*&& validaremail()*/) 
+            if (string.IsNullOrEmpty(email) ) 
             {
+                txtEmail.Focus();
                 lblErro.Text = "Campo Email obrigatório";
                 return false;
             }
+
+            if (encontrarEmail())
+            {
+                lblErro.Text = "Email já cadastrado";
+                return false;
+            }
+
+            if (!EmailValido(email))
+            {
+                lblErro.Text = "Email inválido";
+                return false;
+            }
+
             //if (string.IsNullOrEmpty(genero))
             //{
             //    lblErro.Text = "Campo Gênero obrigatório";
@@ -159,8 +210,6 @@ namespace CadastroCliente
             Genero genero = (Genero)cBoxGenero.SelectedIndex;
             Tipo tipo = (Tipo)groupBox1.TabIndex;
 
-            
-
             Endereco novoEndereco = new Endereco()
             { Logradouro = logradouro, Numero = num, Complemento = complemento, Bairro = bairro, Municipio = municipio, Estado = estado, CEP = cep};
             Cliente novoCliente = new Cliente()
@@ -175,12 +224,13 @@ namespace CadastroCliente
             string email = txtEmail.Text;
             string telefone = mTxtTelefone.Text;
 
-            MessageBox.Show($"CADASTRO CONCLUÍDO\n\nID:{id}\n{nome}\n{email}");
+            MessageBox.Show($"CADASTRO CONCLUÍDO\n\nID:{id}\nNome:{nome}\nEmail:{email}");
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
+            lblErro.Text = "";
             if (Validar())
             {
                 Cadastrar();
