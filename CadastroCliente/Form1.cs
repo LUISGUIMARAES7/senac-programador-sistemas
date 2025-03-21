@@ -5,7 +5,8 @@ namespace CadastroCliente
 {
     public partial class Form1 : Form
     {
-        List<Cliente> clientes = new List<Cliente>();
+        private readonly List<Cliente> clientes = [];
+        private readonly BindingSource BindingSource = [];
 
         public Form1()
         {
@@ -28,6 +29,9 @@ namespace CadastroCliente
             Cliente mari = new Cliente()
             { ID = 2, Nome = "Mari", NomeSocial = "Ma", Endereco = enderecoMari, DataNascimento = "01/01/2003", Email = "mari@email.com", Estrangeiro = false, Etnia = Etnia.Preto, Genero = Genero.Fêmea, Tipo = Tipo.PF, Telefone = "3333-3333" };
             clientes.Add(mari);
+
+            BindingSource.DataSource = clientes;
+            dataGridViewClientes.DataSource = BindingSource;
         }
 
         public int NovoId()
@@ -70,7 +74,19 @@ namespace CadastroCliente
             return false;
         }
 
-        
+        public int ValidarTipo()
+        {
+            Tipo tipo;
+            if (radioPF.Checked == true)
+            {
+                tipo = Tipo.PF;
+            }
+            else
+            {
+                tipo = Tipo.PJ;
+            }
+            return (int)tipo;
+        }
 
         public bool Validar()
         {
@@ -191,6 +207,23 @@ namespace CadastroCliente
             return true;
         }
 
+        public void LimparTela()
+        {
+            txtNome.Clear();
+            txtEmail.Clear();
+            mTxtTelefone.Clear();
+            mTxtDataNascimento.Clear();
+            txtNomeSocial.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtBairro.Clear();
+            txtMunicipio.Clear();
+            mTxtCEP.Clear();
+
+
+        }
+
         public void Cadastrar()
         {
             string nome = txtNome.Text;
@@ -208,7 +241,8 @@ namespace CadastroCliente
             string cep = mTxtCEP.Text;
             Etnia etnia = (Etnia)cBoxEtnia.SelectedIndex;
             Genero genero = (Genero)cBoxGenero.SelectedIndex;
-            Tipo tipo = (Tipo)groupBox1.TabIndex;
+            Tipo tipo = (Tipo)ValidarTipo();
+
 
             Endereco novoEndereco = new Endereco()
             { Logradouro = logradouro, Numero = num, Complemento = complemento, Bairro = bairro, Municipio = municipio, Estado = estado, CEP = cep};
@@ -235,6 +269,8 @@ namespace CadastroCliente
             {
                 Cadastrar();
                 cadastroNaTela();
+                BindingSource.ResetBindings(false);
+                LimparTela();
             }
 
         }

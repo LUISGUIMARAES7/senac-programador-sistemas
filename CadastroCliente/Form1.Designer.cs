@@ -65,8 +65,10 @@
             groupBox2 = new GroupBox();
             cBoxEstado = new ComboBox();
             lblErro = new Label();
+            dataGridViewClientes = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
             SuspendLayout();
             // 
             // mTxtTelefone
@@ -457,11 +459,24 @@
             lblErro.Size = new Size(0, 15);
             lblErro.TabIndex = 40;
             // 
+            // dataGridViewClientes
+            // 
+            dataGridViewClientes.AllowUserToAddRows = false;
+            dataGridViewClientes.AllowUserToDeleteRows = false;
+            dataGridViewClientes.AllowUserToOrderColumns = true;
+            dataGridViewClientes.AllowUserToResizeRows = false;
+            dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewClientes.Location = new Point(16, 427);
+            dataGridViewClientes.Name = "dataGridViewClientes";
+            dataGridViewClientes.Size = new Size(764, 217);
+            dataGridViewClientes.TabIndex = 42;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 441);
+            ClientSize = new Size(803, 656);
+            Controls.Add(dataGridViewClientes);
             Controls.Add(lblErro);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -474,6 +489,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -517,5 +533,6 @@
         private GroupBox groupBox2;
         private ComboBox cBoxEstado;
         private Label lblErro;
+        private DataGridView dataGridViewClientes;
     }
 }
