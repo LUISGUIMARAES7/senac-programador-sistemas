@@ -17,3 +17,17 @@ INSERT INTO endereco (Logradouro, numero, bairro, cidade, estado, país) VALUES
 ('Rua São Marcos', '195', 'Gaivotas', 'São Paulo', 'SP', 'Brasil');
 
 
+SELECT 
+    logradouro
+FROM
+    endereco;
+
+SELECT 
+    logradouro
+FROM
+    endereco
+WHERE
+	logradouro like '%Rua%' ;
+
+
+drop table livro;
