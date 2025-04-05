@@ -1,4 +1,8 @@
-/* 1 */
+drop table produto;
+drop table fornecedor;
+drop table pedido;
+drop table cliente;
+
 
 CREATE TABLE IF NOT EXISTS produto (
     id INT AUTO_INCREMENT,
@@ -72,9 +76,7 @@ values
 	('Fernando Rocha','Curitiba', 30),
 	('Luis Fernando','São Paulo', 28);
     
-/**Exercicios 2/
-
-/*2.1*/
+-- 2.1
 SELECT 
     *
 FROM
@@ -84,7 +86,7 @@ WHERE
         AND preco > 3000
 ORDER BY preco DESC;
 
-/*2.2*/
+-- 2.2
 
 SELECT 
     *
@@ -93,7 +95,7 @@ FROM
 WHERE
     cidade <> 'São Paulo' AND idade > 30;
 
-/*2.3*/
+-- 2.3
 
 SELECT 
     *
@@ -103,7 +105,7 @@ WHERE
     data_pedido BETWEEN '2024-03-10' AND '2024-03-15'
 ORDER BY data_pedido DESC;
 
-/*2.4*/
+-- 2.4
 
 SELECT 
     *
@@ -113,7 +115,7 @@ WHERE
     estoque < 10
 ORDER BY estoque;
 
-/*2.5*/
+-- 2.5
 
 SELECT 
     *
@@ -131,7 +133,7 @@ FROM
     produto
 GROUP BY categoria;
 
-/*3.2*/
+-- 3.2
  
  SELECT 
     cliente_id, COUNT(cliente_id) AS total_pedidos
@@ -139,13 +141,13 @@ FROM
     pedido
 GROUP BY cliente_id;
 
-/*3.3*/
+-- 3.3
 
 select categoria, sum(estoque) as total_produtos
 from produto
 group by categoria;
 
-/*3.4*/
+-- 3.4
 
 SELECT 
     id AS id_pedido, produto_id, quantidade
@@ -154,7 +156,7 @@ FROM
 ORDER BY quantidade DESC
 LIMIT 1;
 
-/*3.5*/
+-- 3.5
 
 SELECT 
     COUNT(cidade) AS qtd_cliente, cidade
@@ -163,17 +165,17 @@ FROM
 GROUP BY cidade
 ORDER BY COUNT(cidade) DESC;
 
-/*4.1*/
+-- 4.1
 
 SELECT 
-    p.nome AS nome_produto, f.nome AS nome_fornecedor
+    p.nome AS produto, f.nome AS fornecedor
 FROM
     produto p
         JOIN
     fornecedor f ON p.fornecedor_id = f.id
 ORDER BY f.nome;
     
-/*4.2*/
+-- 4.2
 
 SELECT
 	p.data_pedido,
@@ -187,7 +189,7 @@ FROM
     produto prod ON p.produto_id = prod.id
 ORDER BY p.data_pedido;
 
-/*4.3*/
+-- 4.3
 
 SELECT 
     p.id AS pedido_id,
@@ -203,18 +205,79 @@ FROM
         JOIN
     fornecedor f ON prod.fornecedor_id = f.id;
 
-/*4.4*/
+-- 4.4
 
 SELECT 
-	c.nome as cliente,
-    prod.nome AS produto,
-    sum(prod.estoque) as qtd_total,
-    f.nome AS fornecedor
+	c.nome as cliente, sum(quantidade) as comprados
 FROM
     pedido p
         JOIN
     cliente c ON p.cliente_id = c.id
+ group by c.nome;
+
+-- 5.1
+
+SELECT 
+    nome, categoria, preco
+FROM
+    produto
+WHERE
+    preco > (SELECT 
+            AVG(preco)
+        FROM
+            produto
+        WHERE
+            categoria = 'Eletrônicos')
+		AND categoria = 'Eletrônicos'
+UNION SELECT 
+    nome, categoria, preco
+FROM
+    produto
+WHERE
+    preco > (SELECT 
+            AVG(preco)
+        FROM
+            produto
+        WHERE
+            categoria = 'Móveis')
+		AND categoria = 'Móveis';
+
+-- 5.2
+
+UPDATE produto 
+SET 
+    preco = preco * 1.10
+WHERE
+    categoria = 'Eletrônicos';
+    
+-- 5.3
+
+DELETE FROM pedido 
+WHERE
+    cliente_id = '4';
+    
+-- 5.4
+
+insert into cliente (nome, cidade, idade)
+values 	
+	('Ricardo Lopes', 'Porto Alegre', 38);
+
+-- 5.5
+
+insert into pedido (produto_id,quantidade, data_pedido, cliente_id)
+values
+	(2,2,'2024-03-25',1);
+
+-- 5.6
+
+SELECT 
+    c.nome AS cliente, prod.categoria
+FROM
+    pedido p
         JOIN
-    produto prod ON p.produto_id = prod.id
-        JOIN
-    fornecedor f ON prod.fornecedor_id = f.id;
+    cliente c ON p.cliente_id = c.id
+		join
+	produto prod on p.produto_id = prod.id
+WHERE
+    categoria = 'Móveis'
+group by c.nome;
