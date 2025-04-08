@@ -1,8 +1,3 @@
-drop table produto;
-drop table fornecedor;
-drop table pedido;
-drop table cliente;
-
 
 CREATE TABLE IF NOT EXISTS produto (
     id INT AUTO_INCREMENT,
@@ -76,7 +71,7 @@ values
 	('Fernando Rocha','Curitiba', 30),
 	('Luis Fernando','São Paulo', 28);
     
--- 2.1
+-- 1.1
 SELECT 
     *
 FROM
@@ -86,7 +81,7 @@ WHERE
         AND preco > 3000
 ORDER BY preco DESC;
 
--- 2.2
+-- 1.2
 
 SELECT 
     *
@@ -95,7 +90,7 @@ FROM
 WHERE
     cidade <> 'São Paulo' AND idade > 30;
 
--- 2.3
+-- 1.3
 
 SELECT 
     *
@@ -103,9 +98,9 @@ FROM
     pedido
 WHERE
     data_pedido BETWEEN '2024-03-10' AND '2024-03-15'
-ORDER BY data_pedido DESC;
+ORDER BY data_pedido;
 
--- 2.4
+-- 1.4
 
 SELECT 
     *
@@ -115,17 +110,18 @@ WHERE
     estoque < 10
 ORDER BY estoque;
 
--- 2.5
+-- 1.5
 
 SELECT 
     *
 FROM
     fornecedor
 WHERE
-    cidade <> 'Rio de Janeiro'
+    cidade != 'Rio de Janeiro'
         AND nome LIKE 'T%';
         
-/*3.1*/
+        
+/*2.1*/
 
 SELECT 
     categoria, ROUND(AVG(preco), 2) AS preço_médio
@@ -133,51 +129,58 @@ FROM
     produto
 GROUP BY categoria;
 
--- 3.2
+-- 2.2
  
  SELECT 
-    cliente_id, COUNT(cliente_id) AS total_pedidos
+    cliente.nome, cliente_id, COUNT(cliente_id) AS total_pedidos
 FROM
     pedido
+        JOIN
+    cliente ON pedido.cliente_id = cliente.id
 GROUP BY cliente_id;
 
--- 3.3
+-- 2.3
 
 select categoria, sum(estoque) as total_produtos
 from produto
 group by categoria;
 
--- 3.4
+-- 2.4
 
 SELECT 
-    id AS id_pedido, produto_id, quantidade
+    id, produto_id, quantidade
 FROM
     pedido
-ORDER BY quantidade DESC
-LIMIT 1;
+where quantidade = (select max(quantidade) from pedido);
 
--- 3.5
+-- 2.5
 
 SELECT 
-    COUNT(cidade) AS qtd_cliente, cidade
+    COUNT(id) AS qtd_cliente, cidade
 FROM
     cliente
 GROUP BY cidade
-ORDER BY COUNT(cidade) DESC;
+ORDER BY qtd_cliente DESC;
 
--- 4.1
+-- 3.1
 
 SELECT 
-    p.nome AS produto, f.nome AS fornecedor
+    p.id,
+    p.nome AS 'produto',
+    p.categoria,
+    p.preco,
+    p.estoque,
+    f.nome AS 'fornecedor'
 FROM
     produto p
         JOIN
     fornecedor f ON p.fornecedor_id = f.id
-ORDER BY f.nome;
+ORDER BY f.nome asc;
     
--- 4.2
+-- 3.2
 
 SELECT
+	p.id,
 	p.data_pedido,
     c.nome AS cliente, 
     prod.nome AS produto
@@ -189,7 +192,7 @@ FROM
     produto prod ON p.produto_id = prod.id
 ORDER BY p.data_pedido;
 
--- 4.3
+-- 3.3
 
 SELECT 
     p.id AS pedido_id,
@@ -205,7 +208,7 @@ FROM
         JOIN
     fornecedor f ON prod.fornecedor_id = f.id;
 
--- 4.4
+-- 3.4
 
 SELECT 
 	c.nome as cliente, sum(quantidade) as comprados
@@ -215,34 +218,23 @@ FROM
     cliente c ON p.cliente_id = c.id
  group by c.nome;
 
--- 5.1
+-- 4.1
 
 SELECT 
     nome, categoria, preco
 FROM
-    produto
+    produto p
 WHERE
     preco > (SELECT 
             AVG(preco)
         FROM
-            produto
+            produto pr
         WHERE
-            categoria = 'Eletrônicos')
-		AND categoria = 'Eletrônicos'
-UNION SELECT 
-    nome, categoria, preco
-FROM
-    produto
-WHERE
-    preco > (SELECT 
-            AVG(preco)
-        FROM
-            produto
-        WHERE
-            categoria = 'Móveis')
-		AND categoria = 'Móveis';
-
--- 5.2
+            p.categoria = pr.categoria)
+order by p.categoria;
+            
+            
+-- 4.2
 
 UPDATE produto 
 SET 
@@ -250,34 +242,37 @@ SET
 WHERE
     categoria = 'Eletrônicos';
     
--- 5.3
+-- 4.3
 
 DELETE FROM pedido 
 WHERE
-    cliente_id = '4';
+    cliente_id in (select id from cliente where cidade = 'curitiba');
     
--- 5.4
+-- 4.4
 
 insert into cliente (nome, cidade, idade)
 values 	
 	('Ricardo Lopes', 'Porto Alegre', 38);
 
--- 5.5
+-- 4.5
 
 insert into pedido (produto_id,quantidade, data_pedido, cliente_id)
-values
-	(2,2,'2024-03-25',1);
+values(
+    (select id from produto where nome = 'Notebook Y'),
+    2,
+    '2024-03-25',
+    (select id from cliente where nome = 'João Silva' and cidade = 'São Paulo')
+    );
 
--- 5.6
+-- 4.6
 
-SELECT 
+SELECT DISTINCT
     c.nome AS cliente, prod.categoria
 FROM
     pedido p
         JOIN
     cliente c ON p.cliente_id = c.id
-		join
-	produto prod on p.produto_id = prod.id
+        JOIN
+    produto prod ON p.produto_id = prod.id
 WHERE
-    categoria = 'Móveis'
-group by c.nome;
+    categoria = 'Móveis';
