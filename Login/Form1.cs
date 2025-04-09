@@ -1,18 +1,18 @@
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace Login
 {
     public partial class FormLogin : Form
     {
-       
+        private static readonly string ConnectionString = "dataSource=localhost;username=root;password=;database=senac;";
+        private MySqlConnection Connection = new MySqlConnection(ConnectionString);
+
         List <Usuario> usuarios = new List<Usuario> ();
         
         public FormLogin()
         {
             InitializeComponent();
-            usuarios.Add(new Usuario() { Email = "ney@email.com", Senha = "Bruna123." });
-            usuarios.Add(new Usuario() { Email = "cr7@email.com", Senha = "Receba123." });
-            usuarios.Add(new Usuario() { Email = "rony@email.com", Senha = "Rustico123." });
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -37,12 +37,34 @@ namespace Login
 
             bool autenticado = false;
 
-            for (int i = 0;usuarios.Count < i;i++)
+            //for (int i = 0;usuarios.Count < i;i++)
+            //{
+            //    if (usuarios[i].Email == usuarioBuscado && usuarios[i].Senha == senha)
+            //    {
+            //        autenticado = true;
+            //    }
+            //}
+
+            try
             {
-                if (usuarios[i].Email == usuarioBuscado && usuarios[i].Senha == senha)
-                {
-                    autenticado = true;
-                }
+                Connection.Open();
+
+                string query = $"SELECT * FROM usuario WHERE email = '{usuarioBuscado}'";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query,Connection);
+
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                autenticado = reader.Read() && reader.GetString(2) == senha;
+           
+            }
+            catch 
+            {
+                MessageBox.Show("Erro de banco de dados");
+            }
+            finally 
+            {
+                Connection.Close();
             }
 
             if (!autenticado)
@@ -114,6 +136,29 @@ namespace Login
 
             bool encontrado = false;
 
+            try
+            {
+                Connection.Open();
+
+                string query = $"insert into usuario (email, senha) values ('{novoUsuario}','{novaSenha}');";
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                mySqlCommand.ExecuteNonQuery();
+
+                lblRes.Text = "Cadastrado com sucesso!!!";
+                lblRes.ForeColor = Color.Green;
+                txtNovoUsuario.Clear();
+                txtNovaSenha.Clear();
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro de banco de dados");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
             for (int i = 0; i < usuarios.Count; i++)
             {
                 if (usuarios[i].Email == novoUsuario)
@@ -126,15 +171,8 @@ namespace Login
             {
                 lblRes.Text = "Usuario já existe";
                 return;
-            }
-
-            usuarios.Add(new Usuario() { Email = novoUsuario, Senha = novaSenha });
-            lblRes.Text = "Cadastrado com sucesso!!!";
-            lblRes.ForeColor = Color.Green;
-            txtNovoUsuario.Clear();
-            txtNovaSenha.Clear();
+            }          
             
-
         }
     }
 
