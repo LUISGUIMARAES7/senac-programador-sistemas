@@ -2,11 +2,14 @@ using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CadastroCliente.dominio;
 
 namespace CadastroCliente
 {
     public partial class Form1 : Form
     {
+        private readonly Cliente Cliente = new();
+
         private readonly List<Cliente> clientes = [];
         private readonly BindingSource BindingSource = [];
 
@@ -14,23 +17,24 @@ namespace CadastroCliente
         {
             InitializeComponent();
 
-            Endereco enderecoLuis = new Endereco()
-            { Logradouro = "Rua 1", Numero = "1", Complemento = "Casa 1", Bairro = "Cocaia", Municipio = "São Paulo", Estado = "SP", CEP = "04849-111", };
-            Cliente luis = new Cliente()
-            { ID = 0, Nome = "Luis", DataNascimento = "07/08/1996", Telefone = "(11) 11111-1111", Email = "luis@email.com", NomeSocial = "Lu", Estrangeiro = false, Etnia = Etnia.Branco, Genero = Genero.Macho, Tipo = Tipo.PF, Endereco = enderecoLuis };
-            clientes.Add(luis);
 
-            Endereco enderecoSarah = new Endereco()
-            { Logradouro = "Rua 2", Numero = "2", Complemento = "Casa 2", Bairro = "Cantinho do Céu", Municipio = "São Paulo", Estado = "SP", CEP = "04849-222" };
-            Cliente sarah = new Cliente()
-            { ID = 1, Nome = "Sarah", NomeSocial = "Sa", Endereco = enderecoSarah, Telefone = "(11) 2222-2222", DataNascimento = "13/01/2003", Email = "sarah@email.com", Estrangeiro = false, Etnia = Etnia.Pardo, Genero = Genero.Fêmea, Tipo = Tipo.PF};
-            clientes.Add(sarah);
+            //Endereco enderecoLuis = new Endereco()
+            //{ Logradouro = "Rua 1", Numero = "1", Complemento = "Casa 1", Bairro = "Cocaia", Municipio = "São Paulo", Estado = "SP", CEP = "04849-111", };
+            //Cliente luis = new Cliente()
+            //{ Id = 0, Nome = "Luis", DataNascimento = "07/08/1996", Telefone = "(11) 11111-1111", Email = "luis@email.com", NomeSocial = "Lu", Estrangeiro = false, Etnia = Etnia.Branco, Genero = Genero.Macho, Tipo = Tipo.PF, Endereco = enderecoLuis };
+            //clientes.Add(luis);
 
-            Endereco enderecoMari = new Endereco()
-            { Logradouro = "Rua 3", Numero = "3", Complemento = "Casa 3", Bairro = "Gaivotas", Municipio = "São Paulo", Estado = "SP", CEP = "04849-333" };
-            Cliente mari = new Cliente()
-            { ID = 2, Nome = "Mari", NomeSocial = "Ma", Endereco = enderecoMari, Telefone = "(11) 3333-3333", DataNascimento = "01/01/2003", Email = "mari@email.com", Estrangeiro = false, Etnia = Etnia.Preto, Genero = Genero.Fêmea, Tipo = Tipo.PF };
-            clientes.Add(mari);
+            //Endereco enderecoSarah = new Endereco()
+            //{ Logradouro = "Rua 2", Numero = "2", Complemento = "Casa 2", Bairro = "Cantinho do Céu", Municipio = "São Paulo", Estado = "SP", CEP = "04849-222" };
+            //Cliente sarah = new Cliente()
+            //{ Id = 1, Nome = "Sarah", NomeSocial = "Sa", Endereco = enderecoSarah, Telefone = "(11) 2222-2222", DataNascimento = "13/01/2003", Email = "sarah@email.com", Estrangeiro = false, Etnia = Etnia.Pardo, Genero = Genero.Fêmea, Tipo = Tipo.PF};
+            //clientes.Add(sarah);
+
+            //Endereco enderecoMari = new Endereco()
+            //{ Logradouro = "Rua 3", Numero = "3", Complemento = "Casa 3", Bairro = "Gaivotas", Municipio = "São Paulo", Estado = "SP", CEP = "04849-333" };
+            //Cliente mari = new Cliente()
+            //{ Id = 2, Nome = "Mari", NomeSocial = "Ma", Endereco = enderecoMari, Telefone = "(11) 3333-3333", DataNascimento = "01/01/2003", Email = "mari@email.com", Estrangeiro = false, Etnia = Etnia.Negro, Genero = Genero.Fêmea, Tipo = Tipo.PF };
+            //clientes.Add(mari);
 
             BindingSource.DataSource = clientes;
             dataGridViewClientes.DataSource = BindingSource;
@@ -38,7 +42,7 @@ namespace CadastroCliente
 
         public int NovoId()
         {
-            int id = clientes[clientes.Count - 1].ID;
+            int id = clientes[clientes.Count - 1].Id;
             int novoId = id + 1;
             return novoId;
         }
@@ -292,11 +296,11 @@ namespace CadastroCliente
             Genero genero = (Genero)cBoxGenero.SelectedIndex;
             Tipo tipo = ValidarTipo();
             
-            Endereco novoEndereco = new Endereco()
-            { Logradouro = logradouro, Numero = num, Complemento = complemento, Bairro = bairro, Municipio = municipio, Estado = estado, CEP = cep};
-            Cliente novoCliente = new Cliente()
-            { ID = NovoId(), Nome = nome, DataNascimento = dataNascimento, Telefone = telefone, Email = email, NomeSocial = nomeSocial, Estrangeiro = estrangeiro, Etnia = etnia, Genero = genero, Tipo = tipo, Endereco = novoEndereco };
-            clientes.Add(novoCliente);
+            //Endereco novoEndereco = new Endereco()
+            //{ Logradouro = logradouro, Numero = num, Complemento = complemento, Bairro = bairro, Municipio = municipio, Estado = estado, CEP = cep};
+            //Cliente novoCliente = new Cliente()
+            //{ Id = NovoId(), Nome = nome, DataNascimento = dataNascimento, Telefone = telefone, Email = email, NomeSocial = nomeSocial, Estrangeiro = estrangeiro, Etnia = etnia, Genero = genero, Tipo = tipo, Endereco = novoEndereco };
+            //clientes.Add(novoCliente);
 
             LimparTela();
         }
