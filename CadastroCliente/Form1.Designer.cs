@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            mTxtTelefone = new MaskedTextBox();
+            maskedTextBoxTelefone = new MaskedTextBox();
             btnCadastrar = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -39,15 +39,15 @@
             label7 = new Label();
             label8 = new Label();
             label10 = new Label();
-            txtNome = new TextBox();
-            txtNomeSocial = new TextBox();
-            txtEmail = new TextBox();
-            mTxtDataNascimento = new MaskedTextBox();
-            cBoxGenero = new ComboBox();
+            textBoxNome = new TextBox();
+            textBoxNomeSocial = new TextBox();
+            textBoxEmail = new TextBox();
+            maskedTextBoxDataNascimento = new MaskedTextBox();
+            comboBoxGenero = new ComboBox();
             checkBoxEstrangeiro = new CheckBox();
-            cBoxEtnia = new ComboBox();
-            radioPF = new RadioButton();
-            radioPJ = new RadioButton();
+            comboBoxEtnia = new ComboBox();
+            radioButtonPf = new RadioButton();
+            radioButtonPj = new RadioButton();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
@@ -55,30 +55,32 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            txtNumero = new TextBox();
-            txtLogradouro = new TextBox();
-            txtComplemento = new TextBox();
-            txtBairro = new TextBox();
-            txtMunicipio = new TextBox();
-            mTxtCEP = new MaskedTextBox();
+            textBoxNumero = new TextBox();
+            textBoxLogradouro = new TextBox();
+            textBoxComplemento = new TextBox();
+            textBoxBairro = new TextBox();
+            textBoxMunicipio = new TextBox();
+            maskedTextBoxCEP = new MaskedTextBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            cBoxEstado = new ComboBox();
-            lblErro = new Label();
+            textBoxEstado = new TextBox();
+            labelErro = new Label();
             dataGridViewClientes = new DataGridView();
+            buttonRemover = new Button();
+            buttonEditar = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
             SuspendLayout();
             // 
-            // mTxtTelefone
+            // maskedTextBoxTelefone
             // 
-            mTxtTelefone.Font = new Font("Segoe UI", 12F);
-            mTxtTelefone.Location = new Point(408, 47);
-            mTxtTelefone.Mask = "(99) 00000-0000";
-            mTxtTelefone.Name = "mTxtTelefone";
-            mTxtTelefone.Size = new Size(135, 29);
-            mTxtTelefone.TabIndex = 1;
+            maskedTextBoxTelefone.Font = new Font("Segoe UI", 12F);
+            maskedTextBoxTelefone.Location = new Point(408, 47);
+            maskedTextBoxTelefone.Mask = "(99) 00000-0000";
+            maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
+            maskedTextBoxTelefone.Size = new Size(135, 29);
+            maskedTextBoxTelefone.TabIndex = 1;
             // 
             // btnCadastrar
             // 
@@ -89,7 +91,7 @@
             btnCadastrar.TabIndex = 17;
             btnCadastrar.Text = "CADASTRAR";
             btnCadastrar.UseVisualStyleBackColor = true;
-            btnCadastrar.Click += btnCadastrar_Click;
+            btnCadastrar.Click += buttonAdicionar_Click;
             // 
             // label1
             // 
@@ -181,49 +183,49 @@
             label10.TabIndex = 12;
             label10.Text = "Tipo de Cliente:";
             // 
-            // txtNome
+            // textBoxNome
             // 
-            txtNome.Font = new Font("Segoe UI", 12F);
-            txtNome.Location = new Point(57, 47);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(276, 29);
-            txtNome.TabIndex = 0;
+            textBoxNome.Font = new Font("Segoe UI", 12F);
+            textBoxNome.Location = new Point(57, 47);
+            textBoxNome.Name = "textBoxNome";
+            textBoxNome.Size = new Size(276, 29);
+            textBoxNome.TabIndex = 0;
             // 
-            // txtNomeSocial
+            // textBoxNomeSocial
             // 
-            txtNomeSocial.Font = new Font("Segoe UI", 12F);
-            txtNomeSocial.Location = new Point(91, 117);
-            txtNomeSocial.Name = "txtNomeSocial";
-            txtNomeSocial.Size = new Size(242, 29);
-            txtNomeSocial.TabIndex = 6;
+            textBoxNomeSocial.Font = new Font("Segoe UI", 12F);
+            textBoxNomeSocial.Location = new Point(91, 117);
+            textBoxNomeSocial.Name = "textBoxNomeSocial";
+            textBoxNomeSocial.Size = new Size(242, 29);
+            textBoxNomeSocial.TabIndex = 6;
             // 
-            // txtEmail
+            // textBoxEmail
             // 
-            txtEmail.Font = new Font("Segoe UI", 12F);
-            txtEmail.Location = new Point(57, 82);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(276, 29);
-            txtEmail.TabIndex = 3;
+            textBoxEmail.Font = new Font("Segoe UI", 12F);
+            textBoxEmail.Location = new Point(57, 82);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(276, 29);
+            textBoxEmail.TabIndex = 3;
             // 
-            // mTxtDataNascimento
+            // maskedTextBoxDataNascimento
             // 
-            mTxtDataNascimento.Font = new Font("Segoe UI", 12F);
-            mTxtDataNascimento.Location = new Point(651, 45);
-            mTxtDataNascimento.Mask = "00/00/0000";
-            mTxtDataNascimento.Name = "mTxtDataNascimento";
-            mTxtDataNascimento.Size = new Size(96, 29);
-            mTxtDataNascimento.TabIndex = 2;
-            mTxtDataNascimento.ValidatingType = typeof(DateTime);
+            maskedTextBoxDataNascimento.Font = new Font("Segoe UI", 12F);
+            maskedTextBoxDataNascimento.Location = new Point(651, 45);
+            maskedTextBoxDataNascimento.Mask = "00/00/0000";
+            maskedTextBoxDataNascimento.Name = "maskedTextBoxDataNascimento";
+            maskedTextBoxDataNascimento.Size = new Size(96, 29);
+            maskedTextBoxDataNascimento.TabIndex = 2;
+            maskedTextBoxDataNascimento.ValidatingType = typeof(DateTime);
             // 
-            // cBoxGenero
+            // comboBoxGenero
             // 
-            cBoxGenero.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cBoxGenero.FormattingEnabled = true;
-            cBoxGenero.Items.AddRange(new object[] { "Macho", "Fêmea", "Diferente" });
-            cBoxGenero.Location = new Point(408, 82);
-            cBoxGenero.Name = "cBoxGenero";
-            cBoxGenero.Size = new Size(100, 29);
-            cBoxGenero.TabIndex = 4;
+            comboBoxGenero.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxGenero.FormattingEnabled = true;
+            comboBoxGenero.Items.AddRange(new object[] { "Macho", "Fêmea", "Diferente" });
+            comboBoxGenero.Location = new Point(408, 82);
+            comboBoxGenero.Name = "comboBoxGenero";
+            comboBoxGenero.Size = new Size(100, 29);
+            comboBoxGenero.TabIndex = 4;
             // 
             // checkBoxEstrangeiro
             // 
@@ -236,39 +238,39 @@
             checkBoxEstrangeiro.Text = "Estrangeiro";
             checkBoxEstrangeiro.UseVisualStyleBackColor = true;
             // 
-            // cBoxEtnia
+            // comboBoxEtnia
             // 
-            cBoxEtnia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cBoxEtnia.FormattingEnabled = true;
-            cBoxEtnia.Items.AddRange(new object[] { "Branco", "Preto", "Pardo", "Amarelo" });
-            cBoxEtnia.Location = new Point(570, 82);
-            cBoxEtnia.Name = "cBoxEtnia";
-            cBoxEtnia.Size = new Size(177, 29);
-            cBoxEtnia.TabIndex = 5;
+            comboBoxEtnia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxEtnia.FormattingEnabled = true;
+            comboBoxEtnia.Items.AddRange(new object[] { "Branco", "Preto", "Pardo", "Amarelo" });
+            comboBoxEtnia.Location = new Point(570, 82);
+            comboBoxEtnia.Name = "comboBoxEtnia";
+            comboBoxEtnia.Size = new Size(177, 29);
+            comboBoxEtnia.TabIndex = 5;
             // 
-            // radioPF
+            // radioButtonPf
             // 
-            radioPF.AutoSize = true;
-            radioPF.Checked = true;
-            radioPF.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            radioPF.Location = new Point(637, 121);
-            radioPF.Name = "radioPF";
-            radioPF.Size = new Size(38, 19);
-            radioPF.TabIndex = 8;
-            radioPF.TabStop = true;
-            radioPF.Text = "PF";
-            radioPF.UseVisualStyleBackColor = true;
+            radioButtonPf.AutoSize = true;
+            radioButtonPf.Checked = true;
+            radioButtonPf.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            radioButtonPf.Location = new Point(637, 121);
+            radioButtonPf.Name = "radioButtonPf";
+            radioButtonPf.Size = new Size(38, 19);
+            radioButtonPf.TabIndex = 8;
+            radioButtonPf.TabStop = true;
+            radioButtonPf.Text = "PF";
+            radioButtonPf.UseVisualStyleBackColor = true;
             // 
-            // radioPJ
+            // radioButtonPj
             // 
-            radioPJ.AutoSize = true;
-            radioPJ.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            radioPJ.Location = new Point(681, 121);
-            radioPJ.Name = "radioPJ";
-            radioPJ.Size = new Size(36, 19);
-            radioPJ.TabIndex = 9;
-            radioPJ.Text = "PJ";
-            radioPJ.UseVisualStyleBackColor = true;
+            radioButtonPj.AutoSize = true;
+            radioButtonPj.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            radioButtonPj.Location = new Point(681, 121);
+            radioButtonPj.Name = "radioButtonPj";
+            radioButtonPj.Size = new Size(36, 19);
+            radioButtonPj.TabIndex = 9;
+            radioButtonPj.Text = "PJ";
+            radioButtonPj.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -340,66 +342,66 @@
             label17.TabIndex = 31;
             label17.Text = "CEP:";
             // 
-            // txtNumero
+            // textBoxNumero
             // 
-            txtNumero.Font = new Font("Segoe UI", 9F);
-            txtNumero.Location = new Point(536, 16);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(190, 23);
-            txtNumero.TabIndex = 11;
+            textBoxNumero.Font = new Font("Segoe UI", 9F);
+            textBoxNumero.Location = new Point(536, 16);
+            textBoxNumero.Name = "textBoxNumero";
+            textBoxNumero.Size = new Size(190, 23);
+            textBoxNumero.TabIndex = 11;
             // 
-            // txtLogradouro
+            // textBoxLogradouro
             // 
-            txtLogradouro.Font = new Font("Segoe UI", 9F);
-            txtLogradouro.Location = new Point(100, 16);
-            txtLogradouro.Name = "txtLogradouro";
-            txtLogradouro.Size = new Size(363, 23);
-            txtLogradouro.TabIndex = 10;
+            textBoxLogradouro.Font = new Font("Segoe UI", 9F);
+            textBoxLogradouro.Location = new Point(100, 16);
+            textBoxLogradouro.Name = "textBoxLogradouro";
+            textBoxLogradouro.Size = new Size(363, 23);
+            textBoxLogradouro.TabIndex = 10;
             // 
-            // txtComplemento
+            // textBoxComplemento
             // 
-            txtComplemento.Font = new Font("Segoe UI", 9F);
-            txtComplemento.Location = new Point(117, 45);
-            txtComplemento.Name = "txtComplemento";
-            txtComplemento.Size = new Size(346, 23);
-            txtComplemento.TabIndex = 12;
+            textBoxComplemento.Font = new Font("Segoe UI", 9F);
+            textBoxComplemento.Location = new Point(117, 45);
+            textBoxComplemento.Name = "textBoxComplemento";
+            textBoxComplemento.Size = new Size(346, 23);
+            textBoxComplemento.TabIndex = 12;
             // 
-            // txtBairro
+            // textBoxBairro
             // 
-            txtBairro.Font = new Font("Segoe UI", 9F);
-            txtBairro.Location = new Point(525, 45);
-            txtBairro.Name = "txtBairro";
-            txtBairro.Size = new Size(201, 23);
-            txtBairro.TabIndex = 13;
+            textBoxBairro.Font = new Font("Segoe UI", 9F);
+            textBoxBairro.Location = new Point(525, 45);
+            textBoxBairro.Name = "textBoxBairro";
+            textBoxBairro.Size = new Size(201, 23);
+            textBoxBairro.TabIndex = 13;
             // 
-            // txtMunicipio
+            // textBoxMunicipio
             // 
-            txtMunicipio.Font = new Font("Segoe UI", 9F);
-            txtMunicipio.Location = new Point(100, 74);
-            txtMunicipio.Name = "txtMunicipio";
-            txtMunicipio.Size = new Size(190, 23);
-            txtMunicipio.TabIndex = 14;
+            textBoxMunicipio.Font = new Font("Segoe UI", 9F);
+            textBoxMunicipio.Location = new Point(100, 74);
+            textBoxMunicipio.Name = "textBoxMunicipio";
+            textBoxMunicipio.Size = new Size(190, 23);
+            textBoxMunicipio.TabIndex = 14;
             // 
-            // mTxtCEP
+            // maskedTextBoxCEP
             // 
-            mTxtCEP.Font = new Font("Segoe UI", 9F);
-            mTxtCEP.Location = new Point(514, 74);
-            mTxtCEP.Mask = "00000-000";
-            mTxtCEP.Name = "mTxtCEP";
-            mTxtCEP.Size = new Size(100, 23);
-            mTxtCEP.TabIndex = 16;
+            maskedTextBoxCEP.Font = new Font("Segoe UI", 9F);
+            maskedTextBoxCEP.Location = new Point(514, 74);
+            maskedTextBoxCEP.Mask = "00000-000";
+            maskedTextBoxCEP.Name = "maskedTextBoxCEP";
+            maskedTextBoxCEP.Size = new Size(100, 23);
+            maskedTextBoxCEP.TabIndex = 16;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(radioPJ);
-            groupBox1.Controls.Add(radioPF);
-            groupBox1.Controls.Add(cBoxEtnia);
+            groupBox1.Controls.Add(radioButtonPj);
+            groupBox1.Controls.Add(radioButtonPf);
+            groupBox1.Controls.Add(comboBoxEtnia);
             groupBox1.Controls.Add(checkBoxEstrangeiro);
-            groupBox1.Controls.Add(cBoxGenero);
-            groupBox1.Controls.Add(mTxtDataNascimento);
-            groupBox1.Controls.Add(txtEmail);
-            groupBox1.Controls.Add(txtNomeSocial);
-            groupBox1.Controls.Add(txtNome);
+            groupBox1.Controls.Add(comboBoxGenero);
+            groupBox1.Controls.Add(maskedTextBoxDataNascimento);
+            groupBox1.Controls.Add(textBoxEmail);
+            groupBox1.Controls.Add(textBoxNomeSocial);
+            groupBox1.Controls.Add(textBoxNome);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
@@ -408,7 +410,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(mTxtTelefone);
+            groupBox1.Controls.Add(maskedTextBoxTelefone);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(16, 47);
             groupBox1.Name = "groupBox1";
@@ -419,13 +421,13 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(cBoxEstado);
-            groupBox2.Controls.Add(mTxtCEP);
-            groupBox2.Controls.Add(txtMunicipio);
-            groupBox2.Controls.Add(txtBairro);
-            groupBox2.Controls.Add(txtComplemento);
-            groupBox2.Controls.Add(txtLogradouro);
-            groupBox2.Controls.Add(txtNumero);
+            groupBox2.Controls.Add(textBoxEstado);
+            groupBox2.Controls.Add(maskedTextBoxCEP);
+            groupBox2.Controls.Add(textBoxMunicipio);
+            groupBox2.Controls.Add(textBoxBairro);
+            groupBox2.Controls.Add(textBoxComplemento);
+            groupBox2.Controls.Add(textBoxLogradouro);
+            groupBox2.Controls.Add(textBoxNumero);
             groupBox2.Controls.Add(label17);
             groupBox2.Controls.Add(label16);
             groupBox2.Controls.Add(label15);
@@ -441,23 +443,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Endereço";
             // 
-            // cBoxEstado
+            // textBoxEstado
             // 
-            cBoxEstado.Font = new Font("Segoe UI", 9F);
-            cBoxEstado.FormattingEnabled = true;
-            cBoxEstado.Items.AddRange(new object[] { "AC ", "AL", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "GO ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SC ", "SP ", "SE ", "TO" });
-            cBoxEstado.Location = new Point(357, 74);
-            cBoxEstado.Name = "cBoxEstado";
-            cBoxEstado.Size = new Size(106, 23);
-            cBoxEstado.TabIndex = 15;
+            textBoxEstado.Font = new Font("Segoe UI", 9F);
+            textBoxEstado.Location = new Point(358, 75);
+            textBoxEstado.Name = "textBoxEstado";
+            textBoxEstado.Size = new Size(105, 23);
+            textBoxEstado.TabIndex = 32;
             // 
-            // lblErro
+            // labelErro
             // 
-            lblErro.AutoSize = true;
-            lblErro.Location = new Point(12, 406);
-            lblErro.Name = "lblErro";
-            lblErro.Size = new Size(0, 15);
-            lblErro.TabIndex = 40;
+            labelErro.AutoSize = true;
+            labelErro.Location = new Point(12, 406);
+            labelErro.Name = "labelErro";
+            labelErro.Size = new Size(0, 15);
+            labelErro.TabIndex = 40;
             // 
             // dataGridViewClientes
             // 
@@ -471,13 +471,37 @@
             dataGridViewClientes.Size = new Size(764, 217);
             dataGridViewClientes.TabIndex = 42;
             // 
+            // buttonRemover
+            // 
+            buttonRemover.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonRemover.Location = new Point(615, 382);
+            buttonRemover.Name = "buttonRemover";
+            buttonRemover.Size = new Size(91, 23);
+            buttonRemover.TabIndex = 43;
+            buttonRemover.Text = "REMOVER";
+            buttonRemover.UseVisualStyleBackColor = true;
+            buttonRemover.Click += buttonRemover_Click;
+            // 
+            // buttonEditar
+            // 
+            buttonEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonEditar.Location = new Point(88, 382);
+            buttonEditar.Name = "buttonEditar";
+            buttonEditar.Size = new Size(91, 23);
+            buttonEditar.TabIndex = 44;
+            buttonEditar.Text = "EDITAR";
+            buttonEditar.UseVisualStyleBackColor = true;
+            buttonEditar.Click += ButtonEditar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(803, 656);
+            Controls.Add(buttonEditar);
+            Controls.Add(buttonRemover);
             Controls.Add(dataGridViewClientes);
-            Controls.Add(lblErro);
+            Controls.Add(labelErro);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
@@ -494,9 +518,14 @@
             PerformLayout();
         }
 
+        private void ButtonEditar_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        private MaskedTextBox mTxtTelefone;
+        private MaskedTextBox maskedTextBoxTelefone;
         private Button btnCadastrar;
         private Label label1;
         private Label label2;
@@ -507,15 +536,15 @@
         private Label label7;
         private Label label8;
         private Label label10;
-        private TextBox txtNome;
-        private TextBox txtNomeSocial;
-        private TextBox txtEmail;
-        private MaskedTextBox mTxtDataNascimento;
-        private ComboBox cBoxGenero;
+        private TextBox textBoxNome;
+        private TextBox textBoxNomeSocial;
+        private TextBox textBoxEmail;
+        private MaskedTextBox maskedTextBoxDataNascimento;
+        private ComboBox comboBoxGenero;
         private CheckBox checkBoxEstrangeiro;
-        private ComboBox cBoxEtnia;
-        private RadioButton radioPF;
-        private RadioButton radioPJ;
+        private ComboBox comboBoxEtnia;
+        private RadioButton radioButtonPf;
+        private RadioButton radioButtonPj;
         private Label label11;
         private Label label12;
         private Label label13;
@@ -523,16 +552,18 @@
         private Label label15;
         private Label label16;
         private Label label17;
-        private TextBox txtNumero;
-        private TextBox txtLogradouro;
-        private TextBox txtComplemento;
-        private TextBox txtBairro;
-        private TextBox txtMunicipio;
-        private MaskedTextBox mTxtCEP;
+        private TextBox textBoxNumero;
+        private TextBox textBoxLogradouro;
+        private TextBox textBoxComplemento;
+        private TextBox textBoxBairro;
+        private TextBox textBoxMunicipio;
+        private MaskedTextBox maskedTextBoxCEP;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private ComboBox cBoxEstado;
-        private Label lblErro;
+        private Label labelErro;
         private DataGridView dataGridViewClientes;
+        private Button buttonRemover;
+        private Button buttonEditar;
+        private TextBox textBoxEstado;
     }
 }

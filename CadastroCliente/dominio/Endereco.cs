@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CadastroCliente.dominio
+﻿namespace CadastroCliente.dominio
 {
-    public class Endereco
+    internal class Endereco
     {
         public int Id { get; set; }
         public string Logradouro { get; set; }
@@ -16,6 +10,30 @@ namespace CadastroCliente.dominio
         public string Municipio { get; set; }
         public string Estado { get; set; }
         public string CEP { get; set; }
-        
+
+        public string Validar()
+        {
+            if (string.IsNullOrWhiteSpace(Logradouro))
+            {
+                return "O campo Logradouro é obrigatório";
+            }
+
+            if (string.IsNullOrWhiteSpace(Numero))
+            {
+                return "O campo Número é obrigatório";
+            }
+
+            if (string.IsNullOrWhiteSpace(Bairro))
+            {
+                return "O campo Bairro é obrigatório";
+            }
+
+            if (string.IsNullOrWhiteSpace(CEP) || CEP.Length != 8)
+            {
+                return "O campo CEP é obrigatório";
+            }
+
+            return string.Empty;
+        }
     }
 }
