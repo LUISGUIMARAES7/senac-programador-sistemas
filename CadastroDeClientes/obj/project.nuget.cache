@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MMyKmEQTJNA=",
+  "dgSpecHash": "9FCnbRPP4Ks=",
   "success": true,
-  "projectFilePath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\programador-de-sistemas\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
+  "projectFilePath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FeLuh\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\FeLuh\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

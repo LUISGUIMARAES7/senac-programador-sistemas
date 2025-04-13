@@ -2139,11 +2139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\programador-de-sistemas\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
+      "projectUniqueName": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
       "projectName": "CadastroDeClientes",
-      "projectPath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\programador-de-sistemas\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
+      "projectPath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\senac-programador-sistemas\\CadastroDeClientes\\CadastroDeClientes.csproj",
       "packagesPath": "C:\\Users\\FeLuh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\programador-de-sistemas\\senac-programador-sistemas\\CadastroDeClientes\\obj\\",
+      "outputPath": "C:\\Users\\FeLuh\\Documentos\\ESTUDOS\\SENAC\\senac-programador-sistemas\\CadastroDeClientes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\FeLuh\\AppData\\Roaming\\NuGet\\NuGet.Config",
