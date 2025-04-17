@@ -18,7 +18,7 @@ namespace ListaAtividades.dominio
 
         public bool Criar()
         {
-            ValidarTitulo();
+            //ValidarTitulo();
             if (!ValidarTitulo())
             {
                 return false;
@@ -71,7 +71,7 @@ namespace ListaAtividades.dominio
 
         private bool ValidarTitulo()
         {
-            return string.IsNullOrEmpty(Titulo);
+            return !string.IsNullOrEmpty(Titulo);
         }
 
         private bool ValidarSituacao()

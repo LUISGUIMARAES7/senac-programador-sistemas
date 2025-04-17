@@ -29,21 +29,22 @@ namespace ListaAtividades
         /// </summary>
         private void InitializeComponent()
         {
-            AtividadeEmAndamento = new TextBox();
+            textBoxAtividadeEmAndamento = new TextBox();
             buttonFinalizar = new Button();
             dataGridViewAtividades = new DataGridView();
             buttonAtualizar = new Button();
             buttonCriar = new Button();
+            labelErro = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAtividades).BeginInit();
             SuspendLayout();
             // 
-            // AtividadeEmAndamento
+            // textBoxAtividadeEmAndamento
             // 
-            AtividadeEmAndamento.Location = new Point(27, 12);
-            AtividadeEmAndamento.Name = "AtividadeEmAndamento";
-            AtividadeEmAndamento.ReadOnly = true;
-            AtividadeEmAndamento.Size = new Size(625, 23);
-            AtividadeEmAndamento.TabIndex = 0;
+            textBoxAtividadeEmAndamento.Location = new Point(27, 12);
+            textBoxAtividadeEmAndamento.Name = "textBoxAtividadeEmAndamento";
+            textBoxAtividadeEmAndamento.ReadOnly = true;
+            textBoxAtividadeEmAndamento.Size = new Size(625, 23);
+            textBoxAtividadeEmAndamento.TabIndex = 0;
             // 
             // buttonFinalizar
             // 
@@ -53,12 +54,19 @@ namespace ListaAtividades
             buttonFinalizar.TabIndex = 1;
             buttonFinalizar.Text = "FINALIZAR";
             buttonFinalizar.UseVisualStyleBackColor = true;
+            buttonFinalizar.Click += buttonFinalizar_Click;
             // 
             // dataGridViewAtividades
             // 
+            dataGridViewAtividades.AllowUserToAddRows = false;
+            dataGridViewAtividades.AllowUserToDeleteRows = false;
+            dataGridViewAtividades.AllowUserToResizeColumns = false;
+            dataGridViewAtividades.AllowUserToResizeRows = false;
             dataGridViewAtividades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAtividades.Location = new Point(27, 67);
+            dataGridViewAtividades.Location = new Point(27, 41);
+            dataGridViewAtividades.MultiSelect = false;
             dataGridViewAtividades.Name = "dataGridViewAtividades";
+            dataGridViewAtividades.ReadOnly = true;
             dataGridViewAtividades.Size = new Size(625, 371);
             dataGridViewAtividades.TabIndex = 2;
             // 
@@ -70,6 +78,7 @@ namespace ListaAtividades
             buttonAtualizar.TabIndex = 3;
             buttonAtualizar.Text = "ATUALIZAR";
             buttonAtualizar.UseVisualStyleBackColor = true;
+            buttonAtualizar.Click += buttonAtualizar_Click;
             // 
             // buttonCriar
             // 
@@ -79,33 +88,45 @@ namespace ListaAtividades
             buttonCriar.TabIndex = 4;
             buttonCriar.Text = "CRIAR";
             buttonCriar.UseVisualStyleBackColor = true;
+            buttonCriar.Click += buttonCriar_Click;
+            // 
+            // labelErro
+            // 
+            labelErro.AutoSize = true;
+            labelErro.Location = new Point(12, 426);
+            labelErro.Name = "labelErro";
+            labelErro.Size = new Size(0, 15);
+            labelErro.TabIndex = 5;
             // 
             // ListaDeAtividades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(labelErro);
             Controls.Add(buttonCriar);
             Controls.Add(buttonAtualizar);
             Controls.Add(dataGridViewAtividades);
             Controls.Add(buttonFinalizar);
-            Controls.Add(AtividadeEmAndamento);
+            Controls.Add(textBoxAtividadeEmAndamento);
             Name = "ListaDeAtividades";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            Load += this.ListaDeAtividades_Load;
+            Load += ListaDeAtividades_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewAtividades).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
-        
+
 
         #endregion
 
-        private TextBox AtividadeEmAndamento;
+        private TextBox textBoxAtividadeEmAndamento;
         private Button buttonFinalizar;
         private DataGridView dataGridViewAtividades;
         private Button buttonAtualizar;
         private Button buttonCriar;
+        private Label labelErro;
     }
 }

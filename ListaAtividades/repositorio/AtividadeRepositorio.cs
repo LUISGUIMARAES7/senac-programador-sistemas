@@ -18,7 +18,7 @@ namespace ListaAtividades.repositorio
             { 
                 conection.Open ();
 
-                string query = "insert into atividade(titulo) values (@titulo);";
+                string query = "insert into atividade (titulo) values (@titulo);";
 
                 using (var cmd = new MySqlCommand(query, conection))
                 {

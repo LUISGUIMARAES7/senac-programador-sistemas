@@ -6,10 +6,10 @@ CREATE TABLE IF NOT EXISTS usuario (
 );
 
 insert into usuario (email, senha) values 
-	('neymar@email.com','Ney123@'),
-    ('rony@email.com','Rustico123@'),
-    ('cr7@email.com','Siii123@');
+	('ney@email.com','Bruna123@'),
+    ('cr7@email.com','Receba123@'),
+    ('rony@email.com','Rustico123@');
+    
     
 select *
-from usuario
-where email = 'neymar@email.com';
+from usuario;
