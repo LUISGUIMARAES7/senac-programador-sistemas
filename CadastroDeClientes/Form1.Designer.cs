@@ -82,7 +82,7 @@
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(91, 23);
             buttonCadastrar.TabIndex = 17;
-            buttonCadastrar.Text = "CADASTRAR";
+            buttonCadastrar.Text = "ADICIONAR";
             buttonCadastrar.UseVisualStyleBackColor = true;
             buttonCadastrar.Click += buttonAdicionar_Click;
             // 
